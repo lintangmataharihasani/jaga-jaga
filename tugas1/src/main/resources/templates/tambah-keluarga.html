@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sistem Informasi Kependudukan - Tambah Keluarga</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Sistem Informasi Kependudukan</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index">Home</a></li>
+            <li><a href="index">Cari Data</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+	
+	<section>
+		<div class="container">
+			<br></br><br></br><br></br>
+			<h3>Tambah Keluarga</h3>
+			
+			<form action="/keluarga/tambah" method="post">
+			  <div class="form-group">
+			    <label for="alamat">Alamat</label>
+			    <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat"></input>
+			  </div>
+			  <div class="form-group">
+			    <label for="rt">RT</label>
+			    <input type="text" class="form-control" id="rt" name="rt" placeholder="RT"></input>
+			  </div>
+			  <div class="form-group">
+			    <label for="rw">RW</label>
+			    <input type="text" class="form-control" id="rw" name="rw" placeholder="RW"></input>
+			  </div>
+			  <div class="form-group">
+			    <label for="nama_kelurahan">Kelurahan/Desa</label>
+			    <input type="text" class="form-control" id="nama_kelurahan" name="nama_kelurahan" placeholder="Kelurahan/Desa"></input>
+			  </div>
+			  <div class="form-group">
+			    <label for="nama_kecamatan">Kecamatan</label>
+			    <input type="text" class="form-control" id="nama_kecamatan" name="nama_kecamatan" placeholder="Kecamatan"></input>
+			  </div>
+			  <div class="form-group">
+			    <label for="nama_kota">Kota</label>
+			    <input type="text" class="form-control" id="nama_kota" name="nama_kota" placeholder="Kota"></input>
+			  </div>
+			  <button type="submit" class="btn btn-default" name="action" value="Tambah">Tambah</button>
+			</form>
+		</div>
+	</section>
+    
+	<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>    
+	<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

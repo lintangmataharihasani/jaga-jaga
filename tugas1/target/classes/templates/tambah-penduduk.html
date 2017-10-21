@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sistem Informasi Kependudukan - Keluarga</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Sistem Informasi Kependudukan</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index">Home</a></li>
+            <li><a href="index">Cari Data</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+	
+	<section>
+		<div class="container">
+			<br></br><br></br><br></br>
+			<h3>Tambah Penduduk</h3>
+			
+			<form action="/penduduk/tambah" method="post">
+			  <div class="form-group">
+			    <label for="nama">Nama</label>
+			    <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama"></input>
+			  </div>
+			  <div class="form-group">
+			    <label for="tempat_lahir">Tempat Lahir</label>
+			    <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Tempat Lahir"></input>
+			  </div>
+			  <div class="form-group">
+			    <label for="tanggal_lahir">Tanggal Lahir</label>
+			    <input type="text" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Format : hh/bb/tttt (Contoh : 30/01/2008)"></input>
+			  </div>
+			  <div class="form-group">
+			    <label for="golongan_darah">Golongan Darah</label>
+			    <select class="form-control" id="golongan_darah" name="golongan_darah">
+			    	<option value="A">A</option>
+			    	<option value="B">B</option>
+			    	<option value="AB">AB</option>
+			    	<option value="O">O</option>
+			    	<option value="A-">A-</option>
+			    	<option value="B-">B-</option>
+			    	<option value="AB-">AB-</option>
+			    	<option value="O-">O-</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			    <label for="jenis_kelamin">Jenis Kelamin</label>
+			    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+			    	<option value="0">Laki-Laki</option>
+			    	<option value="1">Perempuan</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			    <label for="agama">Agama</label>
+			    <input type="text" class="form-control" id="agama" name="agama" placeholder="Agama"></input>
+			  </div>
+			  <div class="form-group">
+			    <label for="status_perkawinan">Status Perkawinan</label>
+			    <select class="form-control" id="status_perkawinan" name="status_perkawinan">
+			    	<option value="Kawin">Kawin</option>
+			    	<option value="Belum Kawin">Belum Kawin</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			    <label for="pekerjaan">Pekerjaan</label>
+			    <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" placeholder="Pekerjaan"></input>
+			  </div>
+			  <div class="form-group">
+			    <label for="kewarganegaraan">Kewarganegaraan</label>
+			    <input type="text" class="form-control" id="kewarganegaraan" name="kewarganegaraan" placeholder="Kewarganegaraan"></input>
+			  </div>
+			  <div class="form-group">
+			    <label for="status_kematian">Status Kematian</label>
+			    <select class="form-control" id="status_kematian" name="status_kematian">
+			    	<option value="0">Hidup</option>
+			    	<option value="1">Wafat</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			    <label for="id_keluarga">Id Keluarga</label>
+			    <input type="text" class="form-control" id="id_keluarga" name="id_keluarga" placeholder="Id Keluarga"></input>
+			  </div>
+			  <div class="form-group">
+			    <label for="status_dalam_keluarga">Status Dalam Keluarga</label>
+			    <select class="form-control" id="status_dalam_keluarga" name="status_dalam_keluarga">
+			    	<option value="Kepala Keluarga">Kepala Keluarga</option>
+			    	<option value="Istri">Istri</option>
+			    	<option value="Anak">Anak</option>
+			    	<option value="Famili Lain">Famili Lain</option>
+			    	<option value="Pembantu">Pembantu</option>
+			    </select>
+			  </div>
+			  <button type="submit" class="btn btn-default" name="action" value="Tambah">Tambah</button>
+			</form>
+		</div>
+	</section>
+    
+	<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>    
+	<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

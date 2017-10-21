@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sistem Informasi SKependudukan</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Sistem Informasi Kependudukan</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index">Home</a></li>
+            <li><a href="index">Cari Data</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+	
+	<section>
+		<div class="container">
+			<br></br><br></br><br></br>
+			<h3 th:text="'Lihat Data Penduduk - ' + ${citizen.nik}">NIK</h3>
+			<br></br>
+			<div class="row">
+				<div class="col-md-6">
+					<p><strong>NIK</strong></p>
+					<p><strong>Nama</strong></p>
+					<p><strong>Tempat/Tanggal Lahir</strong></p>
+					<p><strong>Alamat</strong></p>
+					<p><strong>RT/RW</strong></p>
+					<p><strong>Kelurahan/Desa</strong></p>
+					<p><strong>Kecamatan</strong></p>
+					<p><strong>Kota</strong></p>
+					<p><strong>Golongan Darah</strong></p>
+					<p><strong>Agama</strong></p>
+					<p><strong>Status Perkawinan</strong></p>
+					<p><strong>Pekerjaan</strong></p>
+					<p><strong>Kewarganegaraan</strong></p>
+					<p><strong>Status Kematian</strong></p>
+				</div>
+				<div class="col-md-6">
+					<p th:text="${citizen.nik}">NIK</p>
+					<p th:text="${citizen.nama}">Nama</p>
+					<p th:text="${citizen.tempat_lahir} + '/' + ${citizen.tanggal_lahir}">Tempat/Tanggal Lahir</p>
+					<p th:text="${citizen.alamat}">Alamat</p>
+					<p th:text="${citizen.rt} + '/' + ${citizen.rw}">RT/RW</p>
+					<p th:text="${citizen.nama_kelurahan}">Kelurahan/Desa</p>
+					<p th:text="${citizen.nama_kecamatan}">Kecamatan</p>
+					<p th:text="${citizen.nama_kota}">Kota</p>
+					<p th:text="${citizen.golongan_darah}">Golongan Darah</p>
+					<p th:text="${citizen.agama}">Agama</p>
+					<p th:text="${citizen.status_perkawinan}">Status Perkawinan</p>
+					<p th:text="${citizen.pekerjaan}">Pekerjaan</p>
+					<p th:text="${citizen.kewarganegaraan}">Kewarganegaraan</p>
+					<p th:text="${citizen.status_kematian}">Status Kematian</p>
+					<form action="/penduduk/mati" method="post">
+						<input type="hidden" class="form-control" id="nik" name="nik" placeholder="nik" th:value="${citizen.nik}"></input>
+						<button type="submit" class="btn btn-default" name="action" value="Nonaktifkan">Nonaktifkan</button>
+					</form>
+					
+				</div>
+			</div>
+				
+		</div>
+	</section>
+    
+	<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>    
+	<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

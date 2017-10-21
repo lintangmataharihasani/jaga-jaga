@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sistem Informasi Kependudukan - Cari Penduduk</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Sistem Informasi Kependudukan</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index">Home</a></li>
+            <li><a href="index">Cari Data</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+	
+	<section>
+		<div class="container center">
+			<br></br><br></br><br></br>
+			<div class="row center">
+				<h3>Lihat Data Penduduk Berdasarkan Kecamatan</h3>
+				
+				<form action="/penduduk/cari/kota/kecamatan" method="get">
+				  <div class="form-group">
+				    <label for="nama_kota">Kota</label>
+				    <select class="form-control" id="nama_kota" name="nama_kota">
+				    	<option th:value="${kota.nama_kota}" th:text="${kota.nama_kota}">Nama Kota</option>
+				    </select>
+				  </div>
+				  <div class="form-group">
+				    <label for="nama_kecamatan">Kecamatan</label>
+				    <select class="form-control" id="nama_kecamatan" name="nama_kecamatan">
+				    	<option disabled="true">Pilih kecamatan</option>
+				    	<div th:each="kecamatan, iterationStatus: ${kota.kecamatans}">
+				    		<option th:value="${kecamatan.nama_kecamatan}" th:text="${kecamatan.nama_kecamatan}"></option>
+				    	</div>
+				    </select>
+				  </div>
+				  <button type="submit" class="btn btn-default" name="action" value="Tambah">Tambah</button>
+				</form>
+			</div>
+		</div>
+	</section>
+    
+	<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>    
+	<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

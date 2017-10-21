@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sistem Informasi SKependudukan</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Sistem Informasi Kependudukan</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Cari Data</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+	
+	<section>
+		<div class="container">
+			<br></br><br></br>
+			<h1>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h1>
+			<p>Selamat datang di Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</p>
+			
+			<hr class="divider"></hr>
+			
+			<h3>Lihat Data Penduduk Berdasarkan NIK</h3>
+			<p><strong>Masukkan Nomor Induk Kependudukan</strong></p>
+			<form action="/penduduk" method="get">
+				<div class="input-group">
+			      <input type="text" class="form-control" name="nik" placeholder="Masukkan NIK"></input>
+			      <span class="input-group-btn">
+			        <button class="btn btn-default" type="submit">Lihat</button>
+			      </span>
+			    </div><!-- /input-group -->
+			</form>
+			
+			<hr class="divider"></hr>
+			
+			<h3>Lihat Data Keluarga Berdasarkan NKK</h3>
+			<p><strong>Masukkan Nomor Kartu Keluarga</strong></p>
+			<form action="/keluarga" method="get">
+				<div class="input-group">
+			      <input type="text" class="form-control" name="nkk" placeholder="Masukkan NKK"></input>
+			      <span class="input-group-btn">
+			        <button class="btn btn-default" type="submit">Lihat</button>
+			      </span>
+			    </div><!-- /input-group -->
+			</form>
+		</div>
+	</section>
+    
+	<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>    
+	<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

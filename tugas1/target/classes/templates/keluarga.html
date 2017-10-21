@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sistem Informasi Kependudukan - Keluarga</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Sistem Informasi Kependudukan</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index">Home</a></li>
+            <li><a href="index">Cari Data</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+	
+	<section>
+		<div class="container">
+			<br></br><br></br><br></br>
+			<h3 th:text="'Lihat Data Keluarga - ' + ${family.nomor_kk}">NKK</h3>
+			<br></br>
+			<div class="row">
+				<div class="col-md-2">
+					<p><strong>NKK</strong></p>
+					<p><strong>Status KK</strong></p>
+					<p><strong>Alamat</strong></p>
+					<p><strong>RT/RW</strong></p>
+					<p><strong>Kelurahan/Desa</strong></p>
+					<p><strong>Kecamatan</strong></p>
+					<p><strong>Kota</strong></p>
+				</div>
+				<div class="col-md-4">
+					<p th:text="${family.nomor_kk}">NKK</p>
+					<p th:text="${family.berlaku}">NKK</p> <!-- Sementara -->
+					<p th:text="${family.alamat}">Alamat</p>
+					<p th:text="${family.rt} + '/' + ${family.rw}">RT/RW</p>
+					<p th:text="${family.nama_kelurahan}">Kelurahan/Desa</p>
+					<p th:text="${family.nama_kecamatan}">Kecamatan</p>
+					<p th:text="${family.nama_kota}">Kota</p>
+				</div>
+				<div class="col-md-6"></div>
+			</div>
+			<div class="row">
+				<hr class="divider"></hr>
+				<br></br>
+				<div>
+					<table class="table table-striped">
+						<tr>
+						    <th>No. </th>
+						    <th>Nama Lengkap</th>
+						    <th>NIK</th>
+						    <th>Jenis Kelamin</th>
+						    <th>Tempat Lahir</th>
+						    <th>Tanggal Lahir</th>
+						    <th>Agama</th>
+						    <th>Pekerjaan</th>
+						    <th>Status Perkawinan</th>
+						    <th>Status Dalam Keluarga</th>
+						    <th>Kewarganegaraan</th>
+						    <th>Status Kematian</th> <!-- Sementara -->
+						</tr>
+						<tr th:each="citizen, iterationStatus: ${family.anggotaKeluarga}">
+						    <td th:text="${(iterationStatus.index + 1)}">No.</td>
+						    <td th:text="${citizen.nama}">Nama Lengkap</td>
+						    <td th:text="${citizen.nik}">NIK</td>
+						    <td th:text="${citizen.jenisKelamin}">Jenis Kelamin</td>
+						    <td th:text="${citizen.tempat_lahir}">Tempat Lahir</td>
+						    <td th:text="${citizen.tanggal_lahir}">Tanggal Lahir</td>
+						    <td th:text="${citizen.agama}">Agama</td>
+						    <td th:text="${citizen.pekerjaan}">Pekerjaan</td>
+						    <td th:text="${citizen.status_perkawinan}">Status Perkawinan</td>
+						    <td th:text="${citizen.status_dalam_keluarga}">Status Dalam Keluarga</td>
+						    <td th:text="${citizen.kewarganegaraan}">Kewarganegaraan</td>
+						    <td th:text="${citizen.status_kematian}">Status Kematian</td> <!-- Sementara -->
+						</tr>
+					</table>
+				</div>
+				
+			</div>
+				
+		</div>
+	</section>
+    
+	<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>    
+	<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

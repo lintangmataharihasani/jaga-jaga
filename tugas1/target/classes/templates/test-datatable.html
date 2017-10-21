@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <div>Lihat Penduduk</div>
+        
+        <link rel="stylesheet" type="text/css" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}"></link>
+        <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css}"></link>
+        
+        <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js}"></script>
+		<script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+		<script type="text/javascript" charset="utf-8" th:src="@{http://cdn.datatables.net/1.10.16/js/jquery.dataTables.js}"></script>
+   		<script>
+   			$(document).ready( function () {
+   		    	$('#table').DataTable();
+   			} );
+   		</script>
+    </head>
+    <body>
+    	<nav class="navbar navbar-inverse navbar-fixed-top">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="index">Sistem Informasi Kependudukan</a>
+	        </div>
+	        <div id="navbar" class="collapse navbar-collapse">
+	          <ul class="nav navbar-nav">
+	            <li class="active"><a href="index">Home</a></li>
+	            <li><a href="index">Cari Data</a></li>
+	          </ul>
+	        </div><!--/.nav-collapse -->
+	      </div>
+	    </nav>
+	    
+        <br></br><br></br><br></br>
+    	<section>
+    		<div class="container">
+    			<h1>Lihat Penduduk</h1>
+        
+		        <table id="table" class="display">
+				    <thead>
+				        <tr>
+				            <th>No. </th>
+				            <th>NIK </th>
+				            <th>Nama </th>
+				            <th>Jenis Kelamin </th>
+				        </tr>
+				    </thead>
+				    <tbody>
+				        <tr th:each="citizen,iterationStatus: ${kelurahan.penduduk}">
+				            <td th:text="${iterationStatus.count}">No. </td>
+				            <td th:text="${citizen.nik}">NIK</td>
+				            <td th:text="${citizen.nama}">Nama</td>
+				            <td th:text="${citizen.jenis_kelamin}">Jenis Kelamin</td>
+				        </tr>
+				    </tbody>
+				</table>
+    		</div>
+    	</section>
+   
+    </body>
+</html>
