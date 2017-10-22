@@ -55,4 +55,7 @@ public interface CitizenService
     int countIdenticalCitizens(String nik);
     int countKeluargaKota(String namaKota);
     int countPendudukKota(String namaKota);
+    
+    CitizenModel selectOldest (String id_kelurahan);
+    CitizenModel selectYoungest (String id_kelurahan);
 }

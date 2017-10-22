@@ -25,7 +25,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="index">Sistem Informasi Kependudukan</a>
+	          <a class="navbar-brand" href="/">Sistem Informasi Kependudukan</a>
 	        </div>
 	        <div id="navbar" class="collapse navbar-collapse">
 	          <ul class="nav navbar-nav">
@@ -60,6 +60,43 @@
 				        </tr>
 				    </tbody>
 				</table>
+				<hr></hr><br></br>
+				<div class="row center">
+					<div class="col-md-6">
+						<h3>Penduduk Termuda</h3>
+						<div class="row">
+							<div class="col-md-6">
+								<p><strong>Nama</strong></p>
+								<p><strong>NIK</strong></p>
+								<p><strong>Jenis Kelamin</strong></p>
+								<p><strong>Tanggal Lahir</strong></p>
+							</div>
+							<div class="col-md-6">
+								<p th:text="${youngest.nama}"><strong>Nama</strong></p>
+								<p th:text="${youngest.nik}"><strong>NIK</strong></p>
+								<p th:text="${youngest.jenis_kelamin==0}? 'Laki-Laki' : 'Perempuan'"><strong>Jenis Kelamin</strong></p>
+								<p th:text="${youngest.tanggal_lahir}"><strong>Tanggal Lahir</strong></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<h3>Penduduk Tertua</h3>
+						<div class="row">
+							<div class="col-md-6">
+								<p><strong>Nama</strong></p>
+								<p><strong>NIK</strong></p>
+								<p><strong>Jenis Kelamin</strong></p>
+								<p><strong>Tanggal Lahir</strong></p>
+							</div>
+							<div class="col-md-6">
+								<p th:text="${oldest.nama}"><strong>Nama</strong></p>
+								<p th:text="${oldest.nik}"><strong>NIK</strong></p>
+								<p th:text="${oldest.jenis_kelamin==0}? 'Laki-Laki' : 'Perempuan'"><strong>Jenis Kelamin</strong></p>
+								<p th:text="${oldest.tanggal_lahir}"><strong>Tanggal Lahir</strong></p>
+							</div>
+						</div>
+					</div>
+				</div><br></br>
     		</div>
     	</section>
    

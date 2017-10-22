@@ -171,5 +171,19 @@ public class CitizenServiceDatabase implements CitizenService
     public int countPendudukKota(String nama_kota) {
     	return citizenMapper.countPendudukKota(nama_kota);
     }
+    
+    @Override
+    public CitizenModel selectOldest (String id_kelurahan) {
+    	log.info ("Select oldest: citizen with id_kelurahan {}", id_kelurahan);
+    	log.info ("Select oldest: citizen with nama {}", citizenMapper.selectOldest(id_kelurahan).getNama());
+    	return citizenMapper.selectOldest(id_kelurahan);
+    }
+    
+    @Override
+    public CitizenModel selectYoungest (String id_kelurahan) {
+    	log.info ("Select youngest: citizen with id_kelurahan {}", id_kelurahan);
+    	log.info ("Select youngest: citizen with nama {}", citizenMapper.selectYoungest(id_kelurahan).getNama());
+    	return citizenMapper.selectYoungest(id_kelurahan);
+    }
 }
 

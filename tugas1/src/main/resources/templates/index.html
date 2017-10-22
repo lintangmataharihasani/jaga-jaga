@@ -35,13 +35,26 @@
         </div>
       </div>
     </nav>
+    
+	<div class="jumbotron">
+		<div class="container">
+			<h1>SIDUK JAKARTA</h1>
+	    	<p>Selamat Datang di Sistem Informasi Kependudukan Provinsi DKI Jakarta</p>
+	    	<div class="row">
+	    		<div class="col-md-6">
+	    			<div class="row center">
+						<div class="col-sm-4"><a class="btn btn-default" href="/penduduk/tambah">Tambah Penduduk</a></div>
+						<div class="col-sm-4"><a class="btn btn-default" href="/keluarga/tambah">Tambah Keluarga</a></div>
+						<div class="col-sm-4"><a class="btn btn-default" href="penduduk/cari">Penduduk Kelurahan</a></div>
+					</div>
+	    		</div>
+	    		<div class="col-md-6"></div>
+	    	</div>
+		</div>
+	</div>
 	
 	<section>
 		<div class="container">
-			<br></br><br></br>
-			<h1>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h1>
-			<p>Selamat datang di Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</p>
-			
 			<hr class="divider"></hr>
 			
 			<h3>Lihat Data Penduduk Berdasarkan NIK</h3>
@@ -69,16 +82,13 @@
 			</form>
 			
 			<hr class="divider"></hr>
-			<div class="row center">
-				<div class="col-md-6"><a class="btn btn-default" href="/penduduk/tambah">Tambah Penduduk</a></div>
-				<div class="col-md-6"><a class="btn btn-default" href="/keluarga/tambah">Tambah Keluarga</a></div>
-			</div>
 			
 			<hr class="divider"></hr>
 			<h3>Statistik Kependudukan</h3>
 			<div class="row center">
-				<div class="col-md-6"><p>Jumlah Penduduk : </p><h1 th:text="${jumlah_penduduk}">Jumlah Penduduk</h1></div>
-				<div class="col-md-6"><p>Jumlah Keluarga : </p><h1 th:text="${jumlah_keluarga}">Jumlah Keluarga</h1></div>
+				<div class="col-md-4"><p>Jumlah Penduduk : </p><h1 th:text="${jumlah_penduduk}">Jumlah Penduduk</h1></div>
+				<div class="col-md-4"><p>Jumlah Keluarga : </p><h1 th:text="${jumlah_keluarga}">Jumlah Keluarga</h1></div>
+				<div class="col-md-4"><p>Rasio Penduduk/Keluarga : </p><h1 th:text="${rasio}">Rasio Penduduk/Keluarga</h1></div>
 			</div>
 			<br></br>
 			<table id="table" class="display">
@@ -125,6 +135,8 @@
 			
 		</div>
 	</section>
+	
+	<br></br><br></br>
     
   </body>
 </html>

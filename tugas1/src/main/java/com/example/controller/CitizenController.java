@@ -53,8 +53,10 @@ public class CitizenController
     	
     	int jumlah_penduduk = citizenDAO.countPenduduk();
     	int jumlah_keluarga = citizenDAO.countKeluarga();
+    	int rasio = jumlah_penduduk/jumlah_keluarga;
     	model.addAttribute("jumlah_penduduk", jumlah_penduduk);
     	model.addAttribute("jumlah_keluarga", jumlah_keluarga);
+    	model.addAttribute("rasio", rasio);
     	
     	model.addAttribute("kepulauan_seribu", kepulauan_seribu);
     	model.addAttribute("jakarta_selatan", jakarta_selatan);
@@ -90,8 +92,10 @@ public class CitizenController
     	
     	int jumlah_penduduk = citizenDAO.countPenduduk();
     	int jumlah_keluarga = citizenDAO.countKeluarga();
+    	int rasio = jumlah_penduduk/jumlah_keluarga;
     	model.addAttribute("jumlah_penduduk", jumlah_penduduk);
     	model.addAttribute("jumlah_keluarga", jumlah_keluarga);
+    	model.addAttribute("rasio", rasio);
     	
     	model.addAttribute("kepulauan_seribu", kepulauan_seribu);
     	model.addAttribute("jakarta_selatan", jakarta_selatan);
@@ -839,12 +843,20 @@ public class CitizenController
         	KecamatanModel kecamatan = citizenDAO.selectKecamatan(id_kecamatan);
         	KelurahanModel kelurahan = citizenDAO.selectKelurahan(id_kelurahan);
         	
+        	CitizenModel termuda = citizenDAO.selectYoungest(id_kelurahan);
+        	CitizenModel tertua = citizenDAO.selectOldest(id_kelurahan);
+        	
+        	System.out.println(tertua.getNama());
+        	System.out.println(termuda.getNama());
+        	
         	if(kelurahan == null) {
         		return "error";
         	} else {
         		model.addAttribute("kota", city);
         		model.addAttribute("kecamatan", kecamatan);
-        		model.addAttribute("kelurahan", kelurahan);  		
+        		model.addAttribute("kelurahan", kelurahan);  	
+        		model.addAttribute("youngest", termuda);
+        		model.addAttribute("oldest", tertua);  	
         		return "penduduk-kelurahan";
         	}
     	}

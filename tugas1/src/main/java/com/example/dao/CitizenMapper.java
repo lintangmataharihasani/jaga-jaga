@@ -207,4 +207,21 @@ public interface CitizenMapper
     		+ "AND kecamatan.id_kota = kota.id AND penduduk.id_keluarga = keluarga.id AND kota.nama_kota = #{nama_kota}")
     int countPendudukKota(String nama_kota);
     
+    @Select("SELECT p.id, p.nik, p.nama, p.tempat_lahir, tanggal_lahir, p.jenis_kelamin, p.is_wni, p.id_keluarga, "
+			+ "p.agama, p.pekerjaan, p.status_perkawinan, p.status_dalam_keluarga, p.golongan_darah, p.is_wafat,"
+			+ "kel.RT, kel.RW, kel.alamat,lurah.nama_kelurahan, camat.nama_kecamatan, kot.nama_kota  "
+			+ "FROM penduduk p, keluarga kel, kelurahan lurah, kecamatan camat, kota kot WHERE "
+			+ "p.id_keluarga = kel.id AND lurah.id = kel.id_kelurahan AND lurah.id_kecamatan = camat.id "
+			+ "AND camat.id_kota = kot.id AND lurah.id = #{id_kelurahan} "
+			+ "ORDER BY tanggal_lahir ASC LIMIT 1 ")
+    CitizenModel selectOldest (String id_kelurahan);
+    
+    @Select("SELECT p.id, p.nik, p.nama, p.tempat_lahir, tanggal_lahir, p.jenis_kelamin, p.is_wni, p.id_keluarga, "
+			+ "p.agama, p.pekerjaan, p.status_perkawinan, p.status_dalam_keluarga, p.golongan_darah, p.is_wafat,"
+			+ "kel.RT, kel.RW, kel.alamat,lurah.nama_kelurahan, camat.nama_kecamatan, kot.nama_kota  "
+			+ "FROM penduduk p, keluarga kel, kelurahan lurah, kecamatan camat, kota kot WHERE "
+			+ "p.id_keluarga = kel.id AND lurah.id = kel.id_kelurahan AND lurah.id_kecamatan = camat.id "
+			+ "AND camat.id_kota = kot.id AND lurah.id = #{id_kelurahan} "
+			+ "ORDER BY tanggal_lahir DESC LIMIT 1 ")
+    CitizenModel selectYoungest (String id_kelurahan);
 }
