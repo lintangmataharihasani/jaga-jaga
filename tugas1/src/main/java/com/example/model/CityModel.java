@@ -13,5 +13,7 @@ public class CityModel {
 	private String kode_kota;
 	private String nama_kota;
 	private List<KecamatanModel> kecamatans;
+	private int jumlah_penduduk;
+	private int jumlah_keluarga;
 	
 }

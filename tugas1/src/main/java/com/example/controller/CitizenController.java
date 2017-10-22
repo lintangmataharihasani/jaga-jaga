@@ -30,14 +30,76 @@ public class CitizenController
     CitizenService citizenDAO;
 
     @RequestMapping("/")
-    public String index()
-    {
+    public String index(Model model)
+    {	
+    	CityModel kepulauan_seribu = citizenDAO.selectCity("1");
+    	kepulauan_seribu.setJumlah_penduduk(citizenDAO.countPendudukKota("KABUPATEN KEPULAUAN SERIBU"));
+    	kepulauan_seribu.setJumlah_keluarga(citizenDAO.countKeluargaKota("KABUPATEN KEPULAUAN SERIBU"));
+    	CityModel jakarta_selatan = citizenDAO.selectCity("2");
+    	jakarta_selatan.setJumlah_penduduk(citizenDAO.countPendudukKota("KOTA JAKARTA SELATAN"));
+    	jakarta_selatan.setJumlah_keluarga(citizenDAO.countKeluargaKota("KOTA JAKARTA SELATAN"));
+    	CityModel jakarta_timur = citizenDAO.selectCity("3");
+    	jakarta_timur.setJumlah_penduduk(citizenDAO.countPendudukKota("KOTA JAKARTA TIMUR"));
+    	jakarta_timur.setJumlah_keluarga(citizenDAO.countKeluargaKota("KOTA JAKARTA TIMUR"));
+    	CityModel jakarta_pusat = citizenDAO.selectCity("4");
+    	jakarta_pusat.setJumlah_penduduk(citizenDAO.countPendudukKota("KOTA JAKARTA PUSAT"));
+    	jakarta_pusat.setJumlah_keluarga(citizenDAO.countKeluargaKota("KOTA JAKARTA PUSAT"));
+    	CityModel jakarta_barat = citizenDAO.selectCity("5");
+    	jakarta_barat.setJumlah_penduduk(citizenDAO.countPendudukKota("KOTA JAKARTA BARAT"));
+    	jakarta_barat.setJumlah_keluarga(citizenDAO.countKeluargaKota("KOTA JAKARTA BARAT"));
+    	CityModel jakarta_utara = citizenDAO.selectCity("6");
+    	jakarta_utara.setJumlah_penduduk(citizenDAO.countPendudukKota("KOTA JAKARTA UTARA"));
+    	jakarta_utara.setJumlah_keluarga(citizenDAO.countKeluargaKota("KOTA JAKARTA UTARA"));
+    	
+    	int jumlah_penduduk = citizenDAO.countPenduduk();
+    	int jumlah_keluarga = citizenDAO.countKeluarga();
+    	model.addAttribute("jumlah_penduduk", jumlah_penduduk);
+    	model.addAttribute("jumlah_keluarga", jumlah_keluarga);
+    	
+    	model.addAttribute("kepulauan_seribu", kepulauan_seribu);
+    	model.addAttribute("jakarta_selatan", jakarta_selatan);
+    	model.addAttribute("jakarta_timur", jakarta_timur);
+    	model.addAttribute("jakarta_pusat", jakarta_pusat);
+    	model.addAttribute("jakarta_barat", jakarta_barat);
+    	model.addAttribute("jakarta_utara", jakarta_utara);
         return "index";
     }
     
     @RequestMapping("/index")
-    public String indexPath()
+    public String indexPath(Model model)
     {
+    	
+    	CityModel kepulauan_seribu = citizenDAO.selectCity("1");
+    	kepulauan_seribu.setJumlah_penduduk(citizenDAO.countPendudukKota("KABUPATEN KEPULAUAN SERIBU"));
+    	kepulauan_seribu.setJumlah_keluarga(citizenDAO.countKeluargaKota("KABUPATEN KEPULAUAN SERIBU"));
+    	CityModel jakarta_selatan = citizenDAO.selectCity("2");
+    	jakarta_selatan.setJumlah_penduduk(citizenDAO.countPendudukKota("KOTA JAKARTA SELATAN"));
+    	jakarta_selatan.setJumlah_keluarga(citizenDAO.countKeluargaKota("KOTA JAKARTA SELATAN"));
+    	CityModel jakarta_timur = citizenDAO.selectCity("3");
+    	jakarta_timur.setJumlah_penduduk(citizenDAO.countPendudukKota("KOTA JAKARTA TIMUR"));
+    	jakarta_timur.setJumlah_keluarga(citizenDAO.countKeluargaKota("KOTA JAKARTA TIMUR"));
+    	CityModel jakarta_pusat = citizenDAO.selectCity("4");
+    	jakarta_pusat.setJumlah_penduduk(citizenDAO.countPendudukKota("KOTA JAKARTA PUSAT"));
+    	jakarta_pusat.setJumlah_keluarga(citizenDAO.countKeluargaKota("KOTA JAKARTA PUSAT"));
+    	CityModel jakarta_barat = citizenDAO.selectCity("5");
+    	jakarta_barat.setJumlah_penduduk(citizenDAO.countPendudukKota("KOTA JAKARTA BARAT"));
+    	jakarta_barat.setJumlah_keluarga(citizenDAO.countKeluargaKota("KOTA JAKARTA BARAT"));
+    	CityModel jakarta_utara = citizenDAO.selectCity("6");
+    	jakarta_utara.setJumlah_penduduk(citizenDAO.countPendudukKota("KOTA JAKARTA UTARA"));
+    	jakarta_utara.setJumlah_keluarga(citizenDAO.countKeluargaKota("KOTA JAKARTA UTARA"));
+    	
+    	int jumlah_penduduk = citizenDAO.countPenduduk();
+    	int jumlah_keluarga = citizenDAO.countKeluarga();
+    	model.addAttribute("jumlah_penduduk", jumlah_penduduk);
+    	model.addAttribute("jumlah_keluarga", jumlah_keluarga);
+    	
+    	model.addAttribute("kepulauan_seribu", kepulauan_seribu);
+    	model.addAttribute("jakarta_selatan", jakarta_selatan);
+    	model.addAttribute("jakarta_timur", jakarta_timur);
+    	model.addAttribute("jakarta_pusat", jakarta_pusat);
+    	model.addAttribute("jakarta_barat", jakarta_barat);
+    	model.addAttribute("jakarta_utara", jakarta_utara);
+    	
         return "index";
     }
     
@@ -254,34 +316,47 @@ public class CitizenController
         	System.out.println("jumlah yg serupa " + numberOfIdenticalCitizens);
         	
         	if(numberOfIdenticalCitizens >= 1) {
-        		int latestId = 0;
-        		//if(nik.equals(nik_lama.substring(0,13))) {
-        			//latestId = numberOfIdenticalCitizens;
-        		//} else {
-        			latestId = numberOfIdenticalCitizens + 1;
-        		//}
-        		String convertedId;
-        		if(Integer.toString(latestId).length()==1) {
-        			convertedId = "000" + latestId;
-        		} else if (Integer.toString(latestId).length()==2) {
-        			convertedId = "00" + latestId;
-        		} else if (Integer.toString(latestId).length()==3) {
-        			convertedId = "0" + latestId;
-        		} else {
-        			convertedId = Integer.toString(latestId);
+        		
+        		if(nik.equals(nik_lama.substring(0, 12))) { // NIK tidak berubah
+        			
+        			citizen.setNik(nik_lama);
+            		System.out.println(nik_lama + " panjangnya " + nik_lama.length());
+            		citizenDAO.updateCitizen(citizen);
+            		System.out.println("NIK sama/Tidak Ada Perubahan Pada Tanggal Lahir dan Keluarga");
+            		
+        		} else { // NIK berubah
+        		
+        			int latestId = numberOfIdenticalCitizens + 1;
+            		String convertedId;
+            		if(Integer.toString(latestId).length()==1) {
+            			convertedId = "000" + latestId;
+            		} else if (Integer.toString(latestId).length()==2) {
+            			convertedId = "00" + latestId;
+            		} else if (Integer.toString(latestId).length()==3) {
+            			convertedId = "0" + latestId;
+            		} else {
+            			convertedId = Integer.toString(latestId);
+            		}
+            		nik = nik + convertedId;
+            		
+            		citizen.setNik(nik);
+                	System.out.println(nik + " panjangnya " + nik.length());
+                	citizenDAO.updateCitizen(citizen);
+                	
+                	System.out.println("NIK Ada Perubahan Pada Tanggal Lahir atau Keluarga");
         		}
-        		nik = nik + convertedId;
-        		citizen.setNik(nik);
-        		citizenDAO.updateCitizen(citizen);
-        		System.out.println(nik + " panjangnya " + nik.length());
+        		
         	} else {
+        		
         		nik = nik + "0001";
+        		
         		citizen.setNik(nik);
-        		citizenDAO.updateCitizen(citizen);
         		System.out.println(nik + " panjangnya " + nik.length());
+        		citizenDAO.updateCitizen(citizen);
         	}
     		
     	model.addAttribute("nik", nik);
+    	model.addAttribute("nik_lama", nik_lama);
         return "ubah-penduduk-berhasil";
     }
     
@@ -311,7 +386,7 @@ public class CitizenController
     	//Generate Nomor Keluarga
     	String nomor_kk = "";
     	String kode_kelurahan = citizenDAO.selectKodeKelurahan(nama_kelurahan.toUpperCase());
-    	nomor_kk = (nomor_kk + kode_kelurahan).substring(4);
+    	nomor_kk = (nomor_kk + kode_kelurahan).substring(0, 6);
     	
     	//Generate tanggal pembuatan
     	DateFormat dateFormatHari = new SimpleDateFormat("dd");
@@ -375,7 +450,7 @@ public class CitizenController
     	return "ubah-keluarga";
     }
     
-    @RequestMapping(value = "/keluarga/ubah/{nomor_kk}", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/keluarga/ubah/{nomor_kk}", method = RequestMethod.POST)
     public String updateFamilySubmit( Model model,
     		@RequestParam(value = "id", required = true) String id,
     		@RequestParam(value = "alamat", required = true) String alamat,
@@ -400,7 +475,7 @@ public class CitizenController
     	//Generate Nomor Keluarga
     	String nomor_kk = "";
     	String kode_kelurahan = citizenDAO.selectKodeKelurahan(nama_kelurahan.toUpperCase());
-    	nomor_kk = (nomor_kk + kode_kelurahan).substring(4);
+    	nomor_kk = (nomor_kk + kode_kelurahan).substring(0, 6);
     	
     	//Generate tanggal pembuatan
     	DateFormat dateFormatHari = new SimpleDateFormat("dd");
@@ -449,7 +524,96 @@ public class CitizenController
     	}
     	
     	model.addAttribute("nomor_kk", nomor_kk);
-        return "ubah-keluarga-berhasil";
+    	model.addAttribute("nomor_kk_lama", nomor_kk_lama);
+    	return "ubah-keluarga-berhasil";
+    }*/
+    
+    @RequestMapping(value = "/keluarga/ubah/{nomor_kk}", method = RequestMethod.POST)
+    public String updateFamilySubmit( Model model,
+    		@RequestParam(value = "id", required = true) String id,
+    		@RequestParam(value = "alamat", required = true) String alamat,
+            @RequestParam(value = "rt", required = true) String rt,
+            @RequestParam(value = "rw", required = true) String rw,
+            @RequestParam(value = "nama_kelurahan", required = true) String nama_kelurahan,
+            @RequestParam(value = "nama_kecamatan", required = true) String nama_kecamatan,
+            @RequestParam(value = "nama_kota", required = true) String nama_kota,
+            @RequestParam(value = "is_tidak_berlaku", required = true) String is_tidak_berlaku)
+    {	
+    	//Retrieve old nomor_kk
+    	String nomor_kk_lama = citizenDAO.selectFamilyId(Integer.parseInt(id)).getNomor_kk();
+    	
+    	FamilyModel family = new FamilyModel();
+    	family.setId(Integer.parseInt(id));
+    	family.setAlamat(alamat);
+    	family.setRt(rt);
+    	family.setRw(rw);
+    	String id_kelurahan = citizenDAO.selectIdKelurahan(nama_kelurahan.toUpperCase());
+    	family.setId_kelurahan(id_kelurahan);
+    	
+    	//Generate Nomor Keluarga
+    	String nomor_kk = "";
+    	String kode_kelurahan = citizenDAO.selectKodeKelurahan(nama_kelurahan.toUpperCase());
+    	nomor_kk = (nomor_kk + kode_kelurahan).substring(0, 6);
+    	
+    	//Generate tanggal pembuatan
+    	DateFormat dateFormatHari = new SimpleDateFormat("dd");
+    	Date dateHari = new Date();
+    	String hari = dateFormatHari.format(dateHari);
+    	DateFormat dateFormatBulan = new SimpleDateFormat("MM");
+    	Date dateBulan = new Date();
+    	String bulan = dateFormatBulan.format(dateBulan);
+    	DateFormat dateFormatTahun = new SimpleDateFormat("yyyy");
+    	Date dateTahun = new Date();
+    	String tahun = (dateFormatTahun.format(dateTahun)).substring(2);
+    	nomor_kk = nomor_kk + hari + bulan + tahun;
+    	System.out.println(nomor_kk + " panjangnya " + nomor_kk.length());
+    	
+    	//Generate latest digit
+    	int numberOfIdenticalFamilies = citizenDAO.countIdenticalFamilies(nomor_kk);
+    	System.out.println("jumlah yg serupa " + numberOfIdenticalFamilies);
+    	
+    	if(numberOfIdenticalFamilies >= 1) {
+    		
+    		if(nomor_kk.equals(nomor_kk_lama.substring(0, 12))) { // NKK tidak berubah
+    			
+    			family.setNomor_kk(nomor_kk_lama);
+        		System.out.println(nomor_kk_lama + " panjangnya " + nomor_kk_lama.length());
+        		citizenDAO.updateFamily(family);
+        		System.out.println("NKK sama/Tidak Ada Perubahan Pada Tanggal Pembuatan dan Lokasi");
+        		
+    		} else { // NKK berubah
+    		
+    			int latestId = numberOfIdenticalFamilies + 1;
+        		String convertedId;
+        		if(Integer.toString(latestId).length()==1) {
+        			convertedId = "000" + latestId;
+        		} else if (Integer.toString(latestId).length()==2) {
+        			convertedId = "00" + latestId;
+        		} else if (Integer.toString(latestId).length()==3) {
+        			convertedId = "0" + latestId;
+        		} else {
+        			convertedId = Integer.toString(latestId);
+        		}
+        		nomor_kk = nomor_kk + convertedId;
+        		
+        		family.setNomor_kk(nomor_kk);
+            	System.out.println(nomor_kk + " panjangnya " + nomor_kk.length());
+            	citizenDAO.updateFamily(family);
+            	
+            	System.out.println("NKK Ada Perubahan Pada Tanggal Pembuatan atau Lokasi");
+    		}
+    		
+    	} else {
+    		nomor_kk = nomor_kk + "0001";
+    		
+    		family.setNomor_kk(nomor_kk);
+    		System.out.println(nomor_kk + " panjangnya " + nomor_kk.length());
+    		citizenDAO.updateFamily(family);
+    	}
+    	
+    	model.addAttribute("nomor_kk", nomor_kk);
+    	model.addAttribute("nomor_kk_lama", nomor_kk_lama);
+    	return "ubah-keluarga-berhasil";
     }
 
 
@@ -521,10 +685,12 @@ public class CitizenController
     	
     	citizenDAO.setWafat(citizen);
     	citizen = citizenDAO.selectCitizen(nik);
+    	int baruBerpulang = 1;
     	
     	if(citizen.getIs_wafat() == 1) {
+    		model.addAttribute ("citizen", citizen);
     		model.addAttribute("nik", nik);
-    		return "penduduk-wafat";
+    		return "redirect:/penduduk" + "?nik=" + nik;
     	}
     	model.addAttribute("nik", nik);
     	return "citizen-not-found";
@@ -637,63 +803,51 @@ public class CitizenController
         }
     }
     
-    @RequestMapping("/penduduk/cari")
-    public String searchCitizen() {
-    	return "pilih-kota";
-    }
-    
-    @RequestMapping("/penduduk/cari/kota")
-    public String searchCity(Model model,
-    		@RequestParam(value="nama_kota", required = true) String nama_kota) {
-    	CityModel city = citizenDAO.selectCity(nama_kota);
-    	
-    	if(city == null) {
-    		return "error";
-    	} else {
+    @RequestMapping(value = "/penduduk/cari", method = RequestMethod.GET)
+    public String searchCitizen(Model model,  
+    		@RequestParam(value="kt", required = false) String id_kota,
+    		@RequestParam(value="kc", required = false) String id_kecamatan,
+    		@RequestParam(value="kl", required = false) String id_kelurahan) {
+    	if(id_kota == null && id_kecamatan == null && id_kelurahan == null) {
+    		return "pilih-kota";
     		
-    		model.addAttribute("kota", city);
-    		return "pilih-kecamatan";
-    	}
-    }
-    
-    @RequestMapping("/penduduk/cari/kota/kecamatan")
-    public String searchKecamatan(Model model,
-    		@RequestParam(value="nama_kota", required = true) String nama_kota,
-    		@RequestParam(value="nama_kecamatan", required = true) String nama_kecamatan) {
-    	
-    	CityModel city = citizenDAO.selectCity(nama_kota);
-    	KecamatanModel kecamatan = citizenDAO.selectKecamatan(nama_kecamatan);
-    	
-    	if(kecamatan == null) {
-    		return "error";
-    	} else {
-    		model.addAttribute("kota", city);
-    		model.addAttribute("kecamatan", kecamatan);
+    	} else if (id_kecamatan == null && id_kelurahan == null) {
+    		CityModel city = citizenDAO.selectCity(id_kota);
+        	
+        	if(city == null) {
+        		return "error";
+        	} else {
+        		model.addAttribute("kota", city);
+        		return "pilih-kecamatan";
+        	}
+        	
+    	} else if (id_kelurahan == null) {
+    		CityModel city = citizenDAO.selectCity(id_kota);
+        	KecamatanModel kecamatan = citizenDAO.selectKecamatan(id_kecamatan);
+        	
+        	if(kecamatan == null) {
+        		return "error";
+        	} else {
+        		model.addAttribute("kota", city);
+        		model.addAttribute("kecamatan", kecamatan);
+        		
+        		return "pilih-kelurahan";
+        	}
     		
-    		return "pilih-kelurahan";
-    	}
-    }
-    
-    @RequestMapping("/penduduk/cari/kota/kecamatan/kelurahan")
-    public String searchKelurahan(Model model,
-    		@RequestParam(value="nama_kota", required = true) String nama_kota,
-    		@RequestParam(value="nama_kecamatan", required = true) String nama_kecamatan,
-    		@RequestParam(value="nama_kelurahan", required = true) String nama_kelurahan) {
-    	
-    	CityModel city = citizenDAO.selectCity(nama_kota);
-    	KecamatanModel kecamatan = citizenDAO.selectKecamatan(nama_kecamatan);
-    	KelurahanModel kelurahan = citizenDAO.selectKelurahan(nama_kelurahan);
-    	
-    	if(kelurahan == null) {
-    		return "error";
     	} else {
-    		model.addAttribute("kota", city);
-    		model.addAttribute("kecamatan", kecamatan);
-    		model.addAttribute("kelurahan", kelurahan);  		
-    		return "penduduk-kelurahan";
+    		CityModel city = citizenDAO.selectCity(id_kota);
+        	KecamatanModel kecamatan = citizenDAO.selectKecamatan(id_kecamatan);
+        	KelurahanModel kelurahan = citizenDAO.selectKelurahan(id_kelurahan);
+        	
+        	if(kelurahan == null) {
+        		return "error";
+        	} else {
+        		model.addAttribute("kota", city);
+        		model.addAttribute("kecamatan", kecamatan);
+        		model.addAttribute("kelurahan", kelurahan);  		
+        		return "penduduk-kelurahan";
+        	}
     	}
     }
-    
-    
 
 }

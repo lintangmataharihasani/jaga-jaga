@@ -19,10 +19,10 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index">Home</a></li>
-            <li><a href="index">Cari Data</a></li>
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/penduduk/cari">Cari Data</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
 	
@@ -32,22 +32,22 @@
 			<div class="row center">
 				<h3>Lihat Data Penduduk Berdasarkan Kota</h3>
 				
-				<form action="/penduduk/cari/kota" method="get">
+				<form action="/penduduk/cari" method="get">
 				  <div class="form-group">
-				    <label for="nama_kota">Kota</label>
-				    <select class="form-control" id="nama_kota" name="nama_kota">
+				    <label for="id_kota">Kota</label>
+				    <select class="form-control" id="id_kota" name="kt">
 				    	<option disabled="true">Pilih Kota</option>
 				    	<div>
-				    		<option value="Kabupaten Kepulauan Seribu">Kabupaten Kepulauan Seribu</option>
-				    		<option value="Kota Jakarta Selatan">Kota Jakarta Selatan</option>
-				    		<option value="Kota Jakarta Timur">Kota Jakarta Timur</option>
-				    		<option value="Kota Jakarta Pusat">Kota Jakarta Pusat</option>
-				    		<option value="Kota Jakarta Barat">Kota Jakarta Barat</option>
-				    		<option value="Kota Jakarta Utara">Kota Jakarta Utara</option>
+				    		<option value="1">Kabupaten Kepulauan Seribu</option>
+				    		<option value="2">Kota Jakarta Selatan</option>
+				    		<option value="3">Kota Jakarta Timur</option>
+				    		<option value="4">Kota Jakarta Pusat</option>
+				    		<option value="5">Kota Jakarta Barat</option>
+				    		<option value="6">Kota Jakarta Utara</option>
 				    	</div>
 				    </select>
 				  </div>
-				  <button type="submit" class="btn btn-default" name="action" value="Tambah">Tambah</button>
+				  <button type="submit" class="btn btn-default" >Tambah</button>
 				</form>
 			</div>
 		</div>

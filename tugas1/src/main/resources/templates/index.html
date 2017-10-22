@@ -2,7 +2,17 @@
 <html lang="en">
   <head>
     <title>Sistem Informasi SKependudukan</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}"></link>
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css}"></link>
+        
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js}"></script>
+	<script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" charset="utf-8" th:src="@{http://cdn.datatables.net/1.10.16/js/jquery.dataTables.js}"></script>
+   	<script>
+   			$(document).ready( function () {
+   		    	$('#table').DataTable();
+   			} );
+   	</script>
   </head>
   <body>
     
@@ -15,14 +25,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Sistem Informasi Kependudukan</a>
+          <a class="navbar-brand" href="/">Sistem Informasi Kependudukan</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Cari Data</a></li>
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/penduduk/cari">Cari Data</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
 	
@@ -57,10 +67,64 @@
 			      </span>
 			    </div><!-- /input-group -->
 			</form>
+			
+			<hr class="divider"></hr>
+			<div class="row center">
+				<div class="col-md-6"><a class="btn btn-default" href="/penduduk/tambah">Tambah Penduduk</a></div>
+				<div class="col-md-6"><a class="btn btn-default" href="/keluarga/tambah">Tambah Keluarga</a></div>
+			</div>
+			
+			<hr class="divider"></hr>
+			<h3>Statistik Kependudukan</h3>
+			<div class="row center">
+				<div class="col-md-6"><p>Jumlah Penduduk : </p><h1 th:text="${jumlah_penduduk}">Jumlah Penduduk</h1></div>
+				<div class="col-md-6"><p>Jumlah Keluarga : </p><h1 th:text="${jumlah_keluarga}">Jumlah Keluarga</h1></div>
+			</div>
+			<br></br>
+			<table id="table" class="display">
+				<thead>
+				   <tr>
+				       <th>Kota </th>
+				       <th>Jumlah Penduduk </th>
+				       <th>Jumlah Keluarga </th>
+				   </tr>
+				</thead>
+				<tbody>
+				       <tr>
+				         <td>Kabupaten Kepulauan Seribu</td>
+				         <td th:text="${kepulauan_seribu.jumlah_penduduk}"></td>
+				         <td th:text="${kepulauan_seribu.jumlah_keluarga}"></td>
+				       </tr>
+				       <tr>
+				         <td>Kota Jakarta Selatan</td>
+				         <td th:text="${jakarta_selatan.jumlah_penduduk}"></td>
+				         <td th:text="${jakarta_selatan.jumlah_keluarga}"></td>
+				       </tr>
+				       <tr>
+				         <td>Kota Jakarta Timur</td>
+				         <td th:text="${jakarta_timur.jumlah_penduduk}"></td>
+				         <td th:text="${jakarta_timur.jumlah_keluarga}"></td>
+				       </tr>
+				       <tr>
+				         <td>Kota Jakarta Pusat</td>
+				         <td th:text="${jakarta_pusat.jumlah_penduduk}"></td>
+				         <td th:text="${jakarta_pusat.jumlah_keluarga}"></td>
+				       </tr>
+				       <tr>
+				         <td>Kota Jakarta Barat</td>
+				         <td th:text="${jakarta_barat.jumlah_penduduk}"></td>
+				         <td th:text="${jakarta_barat.jumlah_keluarga}"></td>
+				       </tr>
+				       <tr>
+				         <td>Kota Jakarta Utara</td>
+				         <td th:text="${jakarta_utara.jumlah_penduduk}"></td>
+				         <td th:text="${jakarta_utara.jumlah_keluarga}"></td>
+				       </tr>
+				</tbody>
+			</table>
+			
 		</div>
 	</section>
     
-	<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>    
-	<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>

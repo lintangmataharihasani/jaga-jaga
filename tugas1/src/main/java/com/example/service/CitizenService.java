@@ -31,11 +31,11 @@ public interface CitizenService
     void setTidakBerlaku (FamilyModel family);
     
     //Select Location Data
-    CityModel selectCity (String nama_kota);
+    CityModel selectCity (String id_kota);
     
-    KecamatanModel selectKecamatan (String nama_kecamatan);
+    KecamatanModel selectKecamatan (String id_kecamatan);
     
-    KelurahanModel selectKelurahan (String nama_kelurahan);
+    KelurahanModel selectKelurahan (String id_kelurahan);
     
     KecamatanModel selectKecamatanKota (String id_kota);
     
@@ -53,4 +53,6 @@ public interface CitizenService
     int countPenduduk();
     int countIdenticalFamilies(String nomorKk);
     int countIdenticalCitizens(String nik);
+    int countKeluargaKota(String namaKota);
+    int countPendudukKota(String namaKota);
 }

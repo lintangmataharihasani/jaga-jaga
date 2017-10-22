@@ -21,6 +21,7 @@ import com.example.model.KelurahanModel;
 @Mapper
 public interface CitizenMapper
 {
+	
 	@Select("SELECT p.id, p.nik, p.nama, p.tempat_lahir, p.tanggal_lahir, p.jenis_kelamin, p.is_wni, p.id_keluarga, "
 			+ "p.agama, p.pekerjaan, p.status_perkawinan, p.status_dalam_keluarga, p.golongan_darah, p.is_wafat,"
 			+ "kel.RT, kel.RW, kel.alamat,lurah.nama_kelurahan, camat.nama_kecamatan, kot.nama_kota  "
@@ -120,7 +121,7 @@ public interface CitizenMapper
     void setTidakBerlaku(FamilyModel family);
     
     //Select Location Data
-    @Select("SELECT * FROM kota WHERE nama_kota = #{nama_kota}")
+    @Select("SELECT * FROM kota WHERE id = #{id_kota}")
     @Results(value = {
     		@Result(property="id", column="id"),
     		@Result(property="kode_kota", column="kode_kota"),
@@ -129,9 +130,9 @@ public interface CitizenMapper
     		javaType = List.class,
     		many=@Many(select="selectKecamatanKota"))
     	})
-    CityModel selectCity (String nama_kota);
+    CityModel selectCity (String id_kota);
     
-    @Select("SELECT * FROM kecamatan WHERE nama_kecamatan = #{nama_kecamatan}")
+    @Select("SELECT * FROM kecamatan WHERE id = #{id_kecamatan}")
     @Results(value = {
     		@Result(property="id", column="id"),
     		@Result(property="kode_kecamatan", column="kode_kecamatan"),
@@ -140,9 +141,9 @@ public interface CitizenMapper
     		javaType = List.class,
     		many=@Many(select="selectKelurahanKecamatan"))
     	})
-    KecamatanModel selectKecamatan (String nama_kecamatan);
+    KecamatanModel selectKecamatan (String id_kecamatan);
     
-    @Select("SELECT * FROM kelurahan WHERE nama_kelurahan = #{nama_kelurahan}")
+    @Select("SELECT * FROM kelurahan WHERE id = #{id_kelurahan}")
     @Results(value = {
     		@Result(property="id", column="id"),
     		@Result(property="kode_kelurahan", column="kode_kelurahan"),
@@ -151,7 +152,7 @@ public interface CitizenMapper
     		javaType = List.class,
     		many=@Many(select="selectPendudukKelurahan"))
     	})
-    KelurahanModel selectKelurahan (String nama_kelurahan);
+    KelurahanModel selectKelurahan (String id_kelurahan);
     
     @Select("SELECT * FROM kecamatan WHERE id_kota = #{id_kota}")
     KecamatanModel selectKecamatanKota (@Param("id_kota") String id_kota);
@@ -195,4 +196,15 @@ public interface CitizenMapper
     
     @Select("SELECT COUNT(id) FROM penduduk WHERE nik LIKE CONCAT('%',#{nik},'%')")
     int countIdenticalCitizens(String nik);
+    
+    @Select("SELECT COUNT(*) FROM keluarga, kelurahan, kecamatan, kota WHERE "
+    		+ "keluarga.id_kelurahan = kelurahan.id AND kelurahan.id_kecamatan = kecamatan.id "
+    		+ "AND kecamatan.id_kota = kota.id AND kota.nama_kota = #{nama_kota}")
+    int countKeluargaKota(String nama_kota);
+    
+    @Select("SELECT COUNT(*) FROM penduduk, keluarga, kelurahan, kecamatan, kota WHERE "
+    		+ "keluarga.id_kelurahan = kelurahan.id AND kelurahan.id_kecamatan = kecamatan.id "
+    		+ "AND kecamatan.id_kota = kota.id AND penduduk.id_keluarga = keluarga.id AND kota.nama_kota = #{nama_kota}")
+    int countPendudukKota(String nama_kota);
+    
 }

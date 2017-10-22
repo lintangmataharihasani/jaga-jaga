@@ -118,18 +118,18 @@ public class CitizenServiceDatabase implements CitizenService
     }
     
     @Override
-    public CityModel selectCity (String nama_kota) {
-    	return citizenMapper.selectCity(nama_kota);
+    public CityModel selectCity (String id_kota) {
+    	return citizenMapper.selectCity(id_kota);
     }
     
     @Override
-    public KecamatanModel selectKecamatan (String nama_kecamatan) {
-    	return citizenMapper.selectKecamatan(nama_kecamatan);
+    public KecamatanModel selectKecamatan (String id_kecamatan) {
+    	return citizenMapper.selectKecamatan(id_kecamatan);
     }
     
     @Override
-    public KelurahanModel selectKelurahan (String nama_kelurahan) {
-    	return citizenMapper.selectKelurahan(nama_kelurahan);
+    public KelurahanModel selectKelurahan (String id_kelurahan) {
+    	return citizenMapper.selectKelurahan(id_kelurahan);
     }
     
     @Override
@@ -160,6 +160,16 @@ public class CitizenServiceDatabase implements CitizenService
     @Override
     public int countIdenticalCitizens(String nik) {
     	return citizenMapper.countIdenticalCitizens(nik);
+    }
+    
+    @Override
+    public int countKeluargaKota(String nama_kota) {
+    	return citizenMapper.countKeluargaKota(nama_kota);
+    }
+    
+    @Override
+    public int countPendudukKota(String nama_kota) {
+    	return citizenMapper.countPendudukKota(nama_kota);
     }
 }
 
